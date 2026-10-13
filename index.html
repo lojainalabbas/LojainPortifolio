@@ -1,0 +1,1000 @@
+<!doctype html>
+<html lang="en" dir="ltr">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Lujain Portfolio</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,500;12..96,700;12..96,800&family=IBM+Plex+Sans+Arabic:wght@400;500;700&family=Instrument+Sans:wght@400;500;600&family=JetBrains+Mono:wght@400;500&display=swap">
+<style>
+/* Thmanyah: uses the copy installed on your machine. On your live site, point src at your own downloaded files:
+   src: url("/fonts/thmanyah-sans-bold.woff2") format("woff2"); */
+@font-face{font-family:"Thmanyah";font-weight:400 900;font-display:swap;
+  src:local("Thmanyah Sans"),local("thmanyahsans"),local("Thmanyah Sans Bold"),local("thmanyahsans-Bold"),local("Thmanyah"),local("Thmanyah Serif Display")}
+
+/* Layout: a calm index. The kashida (ـ) is the signature. Work is split into subsections, each with its own showcase:
+   UI/UX = sketch-behind-screen phones, Development = pipeline terminal, Graphic design = posts wall, Games = playable teaser. */
+:root{
+  --bg:#fbfaf7;
+  --surface:#ffffff;
+  --ink:#16191a;
+  --muted:#626a6c;
+  --line:#e4e1da;
+  --accent:#0f8792;
+  --accent-soft:#e3f2f2;
+  --star:#f2bd1d;
+  --ph-a:#f1efe9;
+  --ph-b:#e9e6de;
+  --frame:#141718;
+  --paper:#fdfcf8;
+  --pencil:#2a2a2a;
+  --term:#121618;
+  --term-ink:#d9e4e4;
+  --f-ar:"Thmanyah","IBM Plex Sans Arabic",Tahoma,sans-serif;
+  --f-display:"Bricolage Grotesque","Thmanyah","IBM Plex Sans Arabic","Helvetica Neue",Arial,sans-serif;
+  --f-body:"Instrument Sans","Thmanyah","IBM Plex Sans Arabic","Helvetica Neue",Arial,sans-serif;
+  --f-mono:"JetBrains Mono","Thmanyah","IBM Plex Sans Arabic",ui-monospace,monospace;
+}
+@media (prefers-color-scheme:dark){:root:not([data-theme="light"]){
+  --bg:#111415;--surface:#191d1e;--ink:#eef0ee;--muted:#9aa3a4;--line:#2a3032;--accent:#4cc3cc;--accent-soft:#16312f;--star:#f6c843;--ph-a:#1d2223;--ph-b:#232929;--frame:#050606;--term:#0a0d0e;color-scheme:dark}}
+:root[data-theme="dark"]{
+  --bg:#111415;--surface:#191d1e;--ink:#eef0ee;--muted:#9aa3a4;--line:#2a3032;--accent:#4cc3cc;--accent-soft:#16312f;--star:#f6c843;--ph-a:#1d2223;--ph-b:#232929;--frame:#050606;--term:#0a0d0e;color-scheme:dark}
+
+*{box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{margin:0;background:var(--bg);color:var(--ink);font-family:var(--f-body);font-size:1rem;line-height:1.6;overflow-x:hidden;transition:background .3s,color .3s}
+html[lang="ar"] body{font-family:var(--f-ar);line-height:1.75}
+html[lang="ar"] .t-en, html:not([lang="ar"]) .t-ar{display:none!important}
+.wrap{max-width:1120px;margin:0 auto;padding-inline:clamp(16px,4vw,32px)}
+a{color:inherit}
+:focus-visible{outline:2px solid var(--accent);outline-offset:3px;border-radius:4px}
+.ar{font-family:var(--f-ar);direction:rtl;unicode-bidi:isolate}
+.label{font-family:var(--f-mono);font-size:.75rem;letter-spacing:.08em;text-transform:uppercase;color:var(--muted)}
+html[lang="ar"] .label{letter-spacing:0;font-size:.85rem}
+.star-shape{background:var(--star);clip-path:polygon(50% 0,61% 35%,98% 35%,68% 57%,79% 91%,50% 70%,21% 91%,32% 57%,2% 35%,39% 35%)}
+@keyframes pop{0%{transform:scale(0) rotate(-50deg)}100%{transform:scale(1) rotate(0)}}
+.pop{animation:pop .6s cubic-bezier(.3,1.9,.5,1)}
+
+/* Header */
+.top{position:sticky;top:env(safe-area-inset-top,0px);z-index:20;background:color-mix(in srgb,var(--bg) 88%,transparent);backdrop-filter:blur(8px);border-bottom:1px solid var(--line)}
+.top .wrap{display:flex;align-items:center;justify-content:space-between;gap:12px;padding-block:14px}
+.mark{font-family:var(--f-ar);font-weight:800;font-size:1.35rem;text-decoration:none;display:flex;align-items:center;gap:8px}
+.mark i{width:14px;height:14px;display:inline-block}
+.right{display:flex;align-items:center;gap:clamp(10px,2.4vw,24px)}
+.nav{display:flex;gap:clamp(12px,2.6vw,26px);font-size:.92rem}
+.nav a{text-decoration:none;color:var(--muted)}
+.nav a:hover{color:var(--ink)}
+.pill{font:inherit;font-size:.85rem;font-weight:600;cursor:pointer;background:transparent;color:var(--ink);border:1px solid var(--line);border-radius:999px;padding:4px 12px;min-width:44px;height:32px;display:inline-flex;align-items:center;justify-content:center}
+.pill:hover{border-color:var(--ink)}
+.pill svg{width:16px;height:16px}
+@media (max-width:640px){.nav .opt{display:none}}
+@media (max-width:420px){.nav{display:none}}
+
+/* Hero */
+.hero{padding-block:clamp(56px,10vw,110px) clamp(40px,7vw,72px);touch-action:pan-y}
+.name{position:relative;display:inline-block;font-family:var(--f-ar);font-weight:800;font-size:clamp(3rem,10vw,7rem);line-height:1.15;direction:rtl;white-space:nowrap;cursor:ew-resize;margin:0;user-select:none}
+.name .star-shape{position:absolute;left:-.42em;top:.04em;width:.34em;height:.34em}
+.hint{display:flex;align-items:center;gap:8px;margin-top:6px}
+.hint::before{content:"";width:28px;height:1px;background:var(--muted)}
+.hero-grid{display:grid;grid-template-columns:minmax(0,1fr) auto;gap:24px 48px;align-items:end;margin-top:clamp(28px,4vw,44px)}
+.lead{font-family:var(--f-display);font-weight:500;font-size:clamp(1.3rem,2.6vw,1.9rem);line-height:1.35;margin:0;max-width:30ch;text-wrap:balance}
+html[lang="ar"] .lead{font-family:var(--f-ar);font-weight:700}
+.lead em{font-style:normal;color:var(--accent)}
+.facts{display:grid;gap:6px;margin:0;padding:0;list-style:none;font-size:.92rem;color:var(--muted)}
+.facts b{color:var(--ink);font-weight:600}
+@media (max-width:720px){.hero-grid{grid-template-columns:1fr}}
+
+/* Sections + kashida headings */
+section{padding-block:clamp(48px,7vw,80px);border-top:1px solid var(--line)}
+.sec-head{display:flex;align-items:center;gap:18px;margin-bottom:30px}
+.sec-head h2{margin:0;flex:none;font-family:var(--f-display);font-weight:700;font-size:clamp(1.5rem,3.2vw,2.1rem);letter-spacing:-.01em;line-height:1.2}
+.kw{flex:1;min-width:0;direction:ltr;text-align:right;white-space:nowrap;overflow:hidden;padding-inline-start:.9em;font-family:var(--f-ar);font-weight:800;font-size:clamp(1.5rem,3.2vw,2.1rem);line-height:1.5}
+.kw .txt{position:relative;display:inline-block;direction:rtl}
+.kw .star-shape{position:absolute;left:-.62em;top:.42em;width:.42em;height:.42em;opacity:0}
+.kw.done .star-shape{opacity:1}
+[dir="rtl"] .kw{order:-1}
+
+/* Work sub-navigation */
+.subnav{display:flex;flex-wrap:wrap;gap:8px;margin-bottom:clamp(24px,4vw,40px)}
+.subnav a{text-decoration:none;font-size:.9rem;color:var(--muted);border:1px solid var(--line);padding:6px 14px;border-radius:999px;display:inline-flex;gap:8px;align-items:baseline}
+.subnav a:hover{color:var(--ink);border-color:var(--ink)}
+.subnav b{font-family:var(--f-mono);font-weight:500;font-size:.75rem;color:var(--accent)}
+
+/* Subsection header */
+.sub{padding-block:clamp(36px,6vw,64px) 0}
+.sub + .sub{border-top:1px dashed var(--line);margin-top:clamp(36px,6vw,64px)}
+.sub-head{display:grid;grid-template-columns:auto minmax(0,1fr);gap:4px 16px;align-items:baseline;margin-bottom:clamp(20px,3vw,32px)}
+.sub-head .tag{grid-row:span 2;font-family:var(--f-mono);font-size:.75rem;color:var(--bg);background:var(--ink);border-radius:999px;padding:3px 10px;align-self:center}
+.sub-head h3{margin:0;font-family:var(--f-display);font-weight:700;font-size:clamp(1.25rem,2.4vw,1.6rem);display:flex;flex-wrap:wrap;gap:4px 12px;align-items:baseline}
+html[lang="ar"] .sub-head h3{font-family:var(--f-ar)}
+.sub-head h3 .ar{font-size:.85em;color:var(--muted)}
+.sub-head p{margin:0;color:var(--muted);font-size:.95rem}
+
+/* ===== UI/UX project rows ===== */
+.proj{--pc:var(--accent);display:grid;grid-template-columns:minmax(0,1.05fr) minmax(0,1fr);gap:clamp(24px,5vw,64px);align-items:center;padding-block:clamp(28px,5vw,48px)}
+.proj + .proj{border-top:1px solid var(--line)}
+.proj:nth-child(even) .stage{order:2}
+@media (max-width:800px){.proj{grid-template-columns:1fr}.proj:nth-child(even) .stage{order:0}}
+
+.stage{position:relative;aspect-ratio:5/4;width:100%;max-width:100%;display:block;border:0;padding:0;cursor:pointer;font:inherit;color:inherit;
+  background:radial-gradient(circle at 50% 60%, color-mix(in srgb,var(--pc) 16%,transparent), transparent 62%);border-radius:24px}
+.phone{position:absolute;left:50%;top:50%;width:min(38%,210px);aspect-ratio:9/19.5;border-radius:26px;border:6px solid var(--frame);overflow:hidden;
+  transition:transform .55s cubic-bezier(.2,.8,.2,1), box-shadow .4s;box-shadow:0 18px 40px -18px rgba(0,0,0,.45)}
+.phone img{width:100%;height:100%;object-fit:cover;display:block}
+.phone.sketch{background:var(--paper);z-index:1;transform:translate(-88%,-50%) rotate(-7deg)}
+.phone.final{background:var(--pc);z-index:2;transform:translate(-18%,-50%) rotate(2deg)}
+.stage:hover .phone.sketch,.stage:focus-visible .phone.sketch{transform:translate(-118%,-52%) rotate(-12deg)}
+.stage:hover .phone.final,.stage:focus-visible .phone.final{transform:translate(-8%,-53%) rotate(0deg);box-shadow:0 30px 60px -20px rgba(0,0,0,.5)}
+.phone .sk{width:100%;height:100%;display:block}
+.phone-tag{position:absolute;bottom:8%;font-family:var(--f-mono);font-size:.68rem;letter-spacing:.06em;text-transform:uppercase;color:var(--muted);opacity:0;transition:opacity .3s .15s}
+html[lang="ar"] .phone-tag{letter-spacing:0;font-size:.78rem}
+.phone-tag.a{left:4%}.phone-tag.b{right:6%}
+.stage:hover .phone-tag,.stage:focus-visible .phone-tag{opacity:1}
+/* final screen placeholder */
+.fp{position:absolute;inset:0;display:flex;flex-direction:column;align-items:center;padding:18% 12% 10%;gap:7%}
+.fp i{display:block;background:rgba(255,255,255,.9);border-radius:6px}
+.fp .av{width:42%;aspect-ratio:1;border-radius:50%;background:rgba(255,255,255,.35);border:3px solid rgba(255,255,255,.9)}
+.fp .l{height:7px;border-radius:4px}.fp .w7{width:70%}.fp .w5{width:50%;opacity:.7}
+.fp .cards{display:grid;grid-template-columns:1fr 1fr;gap:8px;width:100%;margin-top:auto}
+.fp .cards i{aspect-ratio:1;border-radius:10px}
+.fp span{position:absolute;top:6%;font-family:var(--f-mono);font-size:.6rem;color:rgba(255,255,255,.95);letter-spacing:.08em;text-transform:uppercase}
+/* spinning CTA sticker */
+.sticker{position:absolute;right:4%;top:4%;width:clamp(84px,13vw,112px);aspect-ratio:1;z-index:3;transform:scale(0) rotate(-30deg);transition:transform .45s cubic-bezier(.3,1.7,.5,1);pointer-events:none}
+[dir="rtl"] .sticker{right:auto;left:4%}
+.stage:hover .sticker,.stage:focus-visible .sticker{transform:scale(1) rotate(0)}
+.sticker svg{width:100%;height:100%;display:block;overflow:visible}
+.sticker .ring{animation:spin 9s linear infinite;transform-origin:50% 50%}
+.sticker text{font-family:var(--f-mono);font-size:10.5px;letter-spacing:1.5px;fill:#fff;font-weight:500}
+html[lang="ar"] .sticker text{font-family:var(--f-ar);letter-spacing:0;font-size:12px;font-weight:700}
+@keyframes spin{to{transform:rotate(360deg)}}
+@media (hover:none){.sticker{transform:scale(.8)}.phone-tag{opacity:1}}
+
+.info{display:grid;gap:14px;align-content:center;min-width:0}
+.num{font-family:var(--f-display);font-weight:800;font-size:clamp(4rem,10vw,7rem);line-height:.85;color:transparent;-webkit-text-stroke:1.5px var(--muted);transition:color .4s,-webkit-text-stroke-color .4s;letter-spacing:-.02em}
+.proj:hover .num{color:var(--pc);-webkit-text-stroke-color:var(--pc)}
+.info h4{margin:0;font-family:var(--f-display);font-weight:700;font-size:clamp(1.6rem,3.2vw,2.2rem);line-height:1.15;display:flex;flex-wrap:wrap;gap:4px 12px;align-items:baseline}
+.info h4 .ar{font-size:.62em;color:var(--muted)}
+.award-chip{align-self:start;justify-self:start;display:inline-flex;align-items:center;gap:6px;font-size:.78rem;font-weight:600;border:1px solid var(--line);border-radius:999px;padding:3px 10px}
+.award-chip i{width:10px;height:10px;display:inline-block}
+.info p{margin:0;color:var(--muted);max-width:52ch}
+.info dl{display:grid;grid-template-columns:auto 1fr;gap:6px 18px;margin:0;font-size:.92rem}
+.info dt{font-family:var(--f-mono);font-size:.7rem;letter-spacing:.08em;text-transform:uppercase;color:var(--muted);padding-top:3px}
+html[lang="ar"] .info dt{letter-spacing:0;font-size:.82rem}
+.info dd{margin:0}
+.aud{display:flex;flex-wrap:wrap;gap:8px}
+.aud span{display:inline-flex;align-items:center;gap:6px;font-size:.82rem;font-weight:500;padding:4px 12px 4px 5px;border-radius:999px;background:color-mix(in srgb,var(--pc) 14%,var(--surface));border:1px solid color-mix(in srgb,var(--pc) 35%,transparent);transform:rotate(var(--r,0deg));transition:transform .3s cubic-bezier(.3,1.8,.5,1)}
+[dir="rtl"] .aud span{padding:4px 5px 4px 12px}
+.aud span:nth-child(2){--r:-2deg}.aud span:nth-child(3){--r:1.5deg}.aud span:first-child{--r:1deg}
+.aud span:hover{transform:rotate(calc(var(--r) * -2)) scale(1.06)}
+.aud svg{width:22px;height:22px;padding:3px;border-radius:50%;background:var(--pc);color:#fff;flex:none}
+.tools{display:flex;flex-wrap:wrap;gap:6px}
+.tools span{font-family:var(--f-mono);font-size:.7rem;background:var(--accent-soft);color:var(--accent);padding:2px 8px;border-radius:4px}
+html[lang="ar"] .tools span{font-size:.8rem}
+.go{justify-self:start;font:inherit;font-weight:600;font-size:.95rem;background:none;border:0;padding:4px 0;color:var(--ink);cursor:pointer;display:inline-flex;gap:8px;align-items:center;border-bottom:2px solid var(--pc)}
+.go .arrow{transition:transform .2s;display:inline-block}
+.go:hover .arrow{transform:translateX(4px)}
+[dir="rtl"] .go .arrow{transform:scaleX(-1)}
+[dir="rtl"] .go:hover .arrow{transform:scaleX(-1) translateX(4px)}
+
+/* ===== Development: pipeline terminal ===== */
+.dev{display:grid;grid-template-columns:minmax(0,1.05fr) minmax(0,1fr);gap:clamp(24px,5vw,64px);align-items:center}
+@media (max-width:800px){.dev{grid-template-columns:1fr}}
+.term{background:var(--term);color:var(--term-ink);border-radius:14px;font-family:var(--f-mono);font-size:.85rem;line-height:1.7;overflow:hidden;direction:ltr;text-align:left;box-shadow:0 20px 50px -24px rgba(0,0,0,.6);border:1px solid #23292b}
+.term-bar{display:flex;gap:6px;padding:10px 14px;border-bottom:1px solid #23292b}
+.term-bar i{width:10px;height:10px;border-radius:50%;background:#3a4244}
+.term-bar i:first-child{background:#e3655b}.term-bar i:nth-child(2){background:#f2bd1d}.term-bar i:nth-child(3){background:#4cc38a}
+.term-body{padding:16px 18px 20px;overflow-x:auto}
+.term .p{color:#4cc3cc}.term .c{color:#7d8a8c}
+.pipe{display:flex;flex-wrap:wrap;gap:6px;margin-top:10px}
+.pipe span{padding:2px 10px;border-radius:4px;background:#1d2426;color:#7d8a8c;transition:background .3s,color .3s}
+.pipe span.ok{background:#14382c;color:#6fe0a8}
+.pipe span.run{background:#3a3214;color:#f6c843}
+.cursor{display:inline-block;width:8px;height:1em;background:var(--term-ink);vertical-align:-2px;animation:blink 1s steps(1) infinite}
+@keyframes blink{50%{opacity:0}}
+
+/* ===== Graphic design: posts wall ===== */
+.posts{columns:3 220px;column-gap:14px}
+.post{break-inside:avoid;margin:0 0 14px;position:relative;border-radius:12px;overflow:hidden;background:repeating-linear-gradient(135deg,var(--ph-a) 0 12px,var(--ph-b) 12px 24px);transition:transform .3s cubic-bezier(.3,1.6,.5,1),box-shadow .3s;max-width:100%}
+.post.sq{aspect-ratio:1}.post.pt{aspect-ratio:4/5}.post.st{aspect-ratio:9/14}
+.post:hover{transform:translateY(-4px) rotate(-1deg);box-shadow:0 16px 30px -16px rgba(0,0,0,.4)}
+.post:nth-child(even):hover{transform:translateY(-4px) rotate(1deg)}
+.post img{width:100%;height:100%;object-fit:cover;display:block}
+.post figcaption{position:absolute;inset:auto 0 0 0;padding:10px 12px;font-size:.8rem;font-weight:600;background:linear-gradient(transparent,rgba(0,0,0,.55));color:#fff}
+.post .ph-l{position:absolute;inset:0;display:grid;place-items:center;font-family:var(--f-mono);font-size:.7rem;color:var(--muted);text-transform:uppercase;letter-spacing:.06em}
+.posts-foot{display:flex;flex-wrap:wrap;justify-content:space-between;gap:12px;align-items:center;margin-top:8px}
+.stat{font-family:var(--f-display);font-weight:800;font-size:clamp(2rem,5vw,3rem);line-height:1}
+.stat small{font-family:var(--f-body);font-weight:500;font-size:.9rem;color:var(--muted);margin-inline-start:8px}
+
+/* ===== Book design: flip-through books ===== */
+.books{display:grid;grid-template-columns:minmax(0,1.35fr) minmax(0,1fr);gap:clamp(24px,5vw,64px);align-items:center}
+@media (max-width:800px){.books{grid-template-columns:1fr}}
+.book-tabs{display:flex;gap:8px;margin-bottom:16px;flex-wrap:wrap}
+.book-tabs button{font:inherit;font-size:.88rem;cursor:pointer;background:transparent;color:var(--muted);border:1px solid var(--line);padding:6px 14px;border-radius:999px}
+.book-tabs button[aria-pressed="true"]{background:var(--ink);color:var(--bg);border-color:var(--ink)}
+.book{position:relative;width:100%;max-width:100%;aspect-ratio:3/2;perspective:2400px}
+.half,.face{background:var(--paper);overflow:hidden}
+.half{position:absolute;top:0;width:50%;height:100%;cursor:pointer;box-shadow:0 22px 40px -24px rgba(0,0,0,.45)}
+.half.l{left:0}.half.r{left:50%}
+.half.l,.face.fl{border-radius:10px 3px 3px 10px}
+.half.r,.face.fr{border-radius:3px 10px 10px 3px}
+.half::after,.face::after{content:"";position:absolute;inset:0;pointer-events:none}
+.half.l::after,.face.fl::after{background:linear-gradient(90deg,transparent 78%,rgba(0,0,0,.16))}
+.half.r::after,.face.fr::after{background:linear-gradient(270deg,transparent 78%,rgba(0,0,0,.16))}
+.leaf{position:absolute;top:0;width:50%;height:100%;transform-style:preserve-3d;transition:transform .85s cubic-bezier(.45,.05,.3,1);z-index:5}
+.leaf.r{left:50%;transform-origin:0 50%}
+.leaf.l{left:0;transform-origin:100% 50%}
+.face{position:absolute;inset:0;backface-visibility:hidden;-webkit-backface-visibility:hidden}
+.face.back{transform:rotateY(180deg)}
+.pg{position:absolute;inset:0;padding:9% 10% 13%;display:flex;flex-direction:column;gap:5%;color:var(--pencil)}
+.pg-img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover}
+.pg.cover{background:var(--bc);color:#fff;justify-content:center;align-items:center;text-align:center;gap:10px}
+.pg.cover b{font-family:var(--f-display);font-size:clamp(1rem,2.6vw,1.7rem);line-height:1.1}
+html[lang="ar"] .pg.cover b{font-family:var(--f-ar)}
+.pg.cover span{font-family:var(--f-mono);font-size:.6rem;letter-spacing:.1em;text-transform:uppercase;opacity:.85}
+.pg.story .ill{flex:1;border-radius:12px;background:var(--c);display:grid;place-items:center;font-family:var(--f-mono);font-size:.6rem;letter-spacing:.06em;text-transform:uppercase;color:rgba(0,0,0,.45)}
+.pg .tl{display:block;height:5px;border-radius:3px;background:rgba(0,0,0,.18);width:85%}
+.pg .tl.s{width:60%}
+.pg.note{background:repeating-linear-gradient(180deg,transparent 0 17px,rgba(70,140,200,.3) 17px 18px)}
+.pg.note::before{content:"";position:absolute;top:0;bottom:0;left:14%;width:1px;background:rgba(201,43,151,.45)}
+.pg .pn{position:absolute;bottom:4%;left:0;right:0;text-align:center;font-family:var(--f-mono);font-size:.62rem;color:rgba(0,0,0,.5)}
+.book-ctrl{display:flex;align-items:center;justify-content:center;gap:16px;margin-top:18px}
+.book-ctrl button{width:42px;height:42px;border-radius:50%;border:1px solid var(--line);background:var(--surface);color:var(--ink);font-size:1.1rem;cursor:pointer}
+.book-ctrl button:disabled{opacity:.35;cursor:default}
+.book-ctrl button:not(:disabled):hover{border-color:var(--ink)}
+[dir="rtl"] .book-ctrl .flip-ar{display:inline-block;transform:scaleX(-1)}
+.book-count{font-family:var(--f-mono);font-size:.85rem;color:var(--muted);min-width:6ch;text-align:center;font-variant-numeric:tabular-nums}
+
+/* ===== Games: playable teaser ===== */
+.game-wrap{display:grid;grid-template-columns:minmax(0,1.05fr) minmax(0,1fr);gap:clamp(24px,5vw,64px);align-items:center}
+@media (max-width:800px){.game-wrap{grid-template-columns:1fr}}
+.game{background:var(--surface);border:1px solid var(--line);border-radius:20px;padding:clamp(16px,3vw,24px);display:grid;gap:14px}
+.game-top{display:flex;justify-content:space-between;align-items:center;gap:10px}
+.timer{font-family:var(--f-mono);font-size:1.1rem;font-variant-numeric:tabular-nums}
+.timer.low{color:#e3655b}
+.board{display:grid;grid-template-columns:repeat(4,1fr);gap:10px}
+.tile{aspect-ratio:3/4;border:0;padding:0;cursor:pointer;background:none;perspective:600px}
+.tile .in{position:relative;display:block;width:100%;height:100%;transition:transform .45s;transform-style:preserve-3d}
+.tile.up .in,.tile.done .in{transform:rotateY(180deg)}
+.tile .f,.tile .b{position:absolute;inset:0;border-radius:10px;backface-visibility:hidden;display:grid;place-items:center}
+.tile .b{background:var(--ink);background-image:radial-gradient(var(--star) 1.2px,transparent 1.6px);background-size:12px 12px}
+.tile .f{background:var(--bg);border:1px solid var(--line);transform:rotateY(180deg)}
+.tile .f svg{width:56%;height:56%}
+.tile.done .f{border-color:#4cc38a}
+.game-msg{min-height:1.6em;font-weight:600;font-size:.95rem}
+.again{justify-self:start}
+
+/* Project dialog */
+dialog{border:0;padding:0;width:min(780px,calc(100% - 32px));max-height:calc(100% - 48px);border-radius:16px;background:var(--surface);color:var(--ink)}
+dialog::backdrop{background:rgba(10,14,15,.6)}
+.dlg{padding:clamp(20px,4vw,36px);display:grid;gap:22px}
+.dlg-head{display:flex;justify-content:space-between;gap:16px;align-items:flex-start}
+.dlg h3{margin:4px 0 0;font-family:var(--f-display);font-size:clamp(1.6rem,4vw,2.2rem);line-height:1.2}
+.close{font:inherit;font-size:1.4rem;line-height:1;background:none;border:1px solid var(--line);color:var(--ink);border-radius:999px;width:40px;height:40px;cursor:pointer;flex:none}
+.dlg-cover{aspect-ratio:16/9;border-radius:12px;background:repeating-linear-gradient(135deg,var(--ph-a) 0 12px,var(--ph-b) 12px 24px);display:grid;place-items:center;font-family:var(--f-mono);font-size:.75rem;color:var(--muted);text-transform:uppercase;letter-spacing:.06em;max-width:100%}
+.meta{display:grid;grid-template-columns:repeat(auto-fit,minmax(150px,1fr));gap:16px;margin:0}
+.meta dt{font-family:var(--f-mono);font-size:.7rem;letter-spacing:.08em;text-transform:uppercase;color:var(--muted)}
+html[lang="ar"] .meta dt{letter-spacing:0;font-size:.85rem}
+.meta dd{margin:2px 0 0;font-size:.95rem}
+.story{display:grid;gap:16px}
+.story h4{margin:0 0 2px;font-size:.95rem}
+.story p{margin:0;color:var(--muted);max-width:65ch}
+.dlg-links{display:flex;flex-wrap:wrap;gap:10px}
+
+/* Buttons */
+.btn{font:inherit;font-size:.92rem;font-weight:600;cursor:pointer;text-decoration:none;display:inline-flex;align-items:center;gap:6px;padding:9px 18px;border-radius:999px;border:1px solid var(--ink);background:var(--ink);color:var(--bg)}
+.btn.ghost{background:transparent;color:var(--ink);border-color:var(--line)}
+.btn:hover{background:var(--accent);border-color:var(--accent);color:#fff}
+
+/* Lists */
+.rows{list-style:none;margin:0;padding:0}
+.rows li{display:grid;grid-template-columns:minmax(0,170px) minmax(0,1fr);gap:4px 32px;padding-block:18px;border-bottom:1px solid var(--line)}
+.rows li:first-child{padding-top:0}
+.rows .when{font-family:var(--f-mono);font-size:.8rem;color:var(--muted);padding-top:3px;font-variant-numeric:tabular-nums}
+html[lang="ar"] .rows .when{font-size:.9rem}
+.rows h3{margin:0;font-size:1.05rem;font-weight:600}
+.rows p{margin:2px 0 0;color:var(--muted);max-width:62ch}
+@media (max-width:600px){.rows li{grid-template-columns:1fr}}
+.cols{display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,230px),1fr));gap:28px}
+.cols h3{margin:0 0 10px;font-size:.95rem;font-weight:600}
+.cols ul{list-style:none;margin:0;padding:0;display:grid;gap:6px;color:var(--muted)}
+.two{display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,380px),1fr));gap:56px}
+
+/* Contact */
+.contact .big{font-family:var(--f-display);font-weight:700;font-size:clamp(1.8rem,5vw,3.2rem);line-height:1.15;margin:0 0 24px;text-wrap:balance;max-width:22ch}
+html[lang="ar"] .contact .big{font-family:var(--f-ar);font-weight:800}
+.contact-row{display:flex;flex-wrap:wrap;gap:10px;align-items:center}
+.email{font-family:var(--f-mono);font-size:1rem;user-select:all;padding:9px 16px;border:1px dashed var(--line);border-radius:999px;word-break:break-all;direction:ltr}
+.socials{display:flex;flex-wrap:wrap;gap:8px 24px;font-size:.95rem;margin-top:22px}
+.socials a{color:var(--muted)}
+footer{padding-block:28px;border-top:1px solid var(--line);color:var(--muted);font-size:.85rem}
+footer .wrap{display:flex;justify-content:space-between;gap:12px;flex-wrap:wrap}
+
+@media (prefers-reduced-motion:reduce){*,*::before,*::after{animation:none!important;transition:none!important}}
+</style>
+</head>
+<body>
+
+<svg width="0" height="0" style="position:absolute" aria-hidden="true">
+  <defs>
+    <filter id="rough"><feTurbulence type="fractalNoise" baseFrequency=".035" numOctaves="2" seed="7"/><feDisplacementMap in="SourceGraphic" scale="3.2"/></filter>
+  </defs>
+</svg>
+
+<header class="top">
+  <div class="wrap">
+    <a class="mark" href="#top"><span class="ar">لجين</span><i class="star-shape" aria-hidden="true"></i></a>
+    <div class="right">
+      <nav class="nav" aria-label="Sections">
+        <a href="#work"><span class="t-en">Work</span><span class="t-ar">أعمالي</span></a>
+        <a class="opt" href="#experience"><span class="t-en">Experience</span><span class="t-ar">الخبرات</span></a>
+        <a class="opt" href="#skills"><span class="t-en">Skills</span><span class="t-ar">المهارات</span></a>
+        <a href="#contact"><span class="t-en">Contact</span><span class="t-ar">تواصل</span></a>
+      </nav>
+      <button class="pill" id="theme" type="button" aria-label="Switch light or dark mode"></button>
+      <button class="pill" id="lang" type="button" aria-label="Switch language"><span class="t-en ar">عربي</span><span class="t-ar">EN</span></button>
+    </div>
+  </div>
+</header>
+
+<main id="top">
+  <div class="wrap hero" id="hero">
+    <h1 class="name" id="name" aria-label="لجين"><i class="star-shape" id="star" aria-hidden="true"></i><span id="name-txt">لجين</span></h1>
+    <div class="hint label"><span class="t-en">Move or drag across my name</span><span class="t-ar">حرّك المؤشر أو اسحب على اسمي</span></div>
+    <div class="hero-grid">
+      <p class="lead">
+        <span class="t-en">Software engineer who designs. I take products from <em>Figma</em> to <em>working code</em>, with people at the centre.</span>
+        <span class="t-ar">مهندسة برمجيات بعين مصمّمة. أحوّل الفكرة من <em>Figma</em> إلى <em>منتج يعمل</em>، والمستخدم في قلب كل قرار.</span>
+      </p>
+      <ul class="facts">
+        <li><span class="t-en"><b>BSc Computer Science with HCI</b>, Newcastle University</span><span class="t-ar"><b>بكالوريوس علوم الحاسب مع تفاعل الإنسان والحاسب</b>، جامعة نيوكاسل</span></li>
+        <li><span class="t-en"><b>First Class Honours</b> · 2026</span><span class="t-ar"><b>مرتبة الشرف الأولى</b> · 2026</span></li>
+        <li><span class="t-en"><b>Now:</b> Intern at AnaQadha</span><span class="t-ar"><b>حاليًا:</b> متدربة في AnaQadha</span></li>
+      </ul>
+    </div>
+  </div>
+
+  <!-- ================= WORK ================= -->
+  <section id="work">
+    <div class="wrap">
+      <div class="sec-head"><h2>Selected work</h2><div class="kw" data-k="مش|اريعي"></div></div>
+
+      <nav class="subnav" aria-label="Work categories">
+        <a href="#uiux"><span class="t-en">UI/UX design</span><span class="t-ar">تصميم تجربة المستخدم</span><b id="c-uiux"></b></a>
+        <a href="#dev"><span class="t-en">Development</span><span class="t-ar">التطوير</span><b>1</b></a>
+        <a href="#posts"><span class="t-en">Graphic design</span><span class="t-ar">التصميم الجرافيكي</span><b>100+</b></a>
+        <a href="#books"><span class="t-en">Book design</span><span class="t-ar">تصميم الكتب</span><b>2</b></a>
+        <a href="#games"><span class="t-en">Games</span><span class="t-ar">الألعاب</span><b>1</b></a>
+      </nav>
+
+      <!-- UI/UX -->
+      <div class="sub" id="uiux">
+        <div class="sub-head"><span class="tag">A</span>
+          <h3><span class="t-en">UI/UX design</span><span class="t-ar">تصميم تجربة المستخدم</span></h3>
+          <p><span class="t-en">From paper sketch to final screen. Hover the phones to compare.</span><span class="t-ar">من الرسمة الورقية إلى الشاشة النهائية. مرّر على الجوالين للمقارنة.</span></p>
+        </div>
+        <div id="uiux-list"></div>
+      </div>
+
+      <!-- Development -->
+      <div class="sub" id="dev">
+        <div class="sub-head"><span class="tag">B</span>
+          <h3><span class="t-en">Development</span><span class="t-ar">التطوير</span></h3>
+          <p><span class="t-en">Backend, data and delivery pipelines.</span><span class="t-ar">الواجهات الخلفية والبيانات وخطوط النشر.</span></p>
+        </div>
+        <div class="dev" id="dev-row"></div>
+      </div>
+
+      <!-- Graphic design -->
+      <div class="sub" id="posts">
+        <div class="sub-head"><span class="tag">C</span>
+          <h3><span class="t-en">Graphic design &amp; posts</span><span class="t-ar">التصميم الجرافيكي والمنشورات</span></h3>
+          <p><span class="t-en">Branding, campaigns and social content for real clients.</span><span class="t-ar">هويات وحملات ومحتوى تواصل اجتماعي لعملاء حقيقيين.</span></p>
+        </div>
+        <!-- Replace each placeholder with <img src="your-post.jpg" alt="..."> -->
+        <div class="posts">
+          <figure class="post sq"><span class="ph-l">Post</span><figcaption><span class="t-en">Ajiad Bakery · social post</span><span class="t-ar">مخبز أجياد · منشور</span></figcaption></figure>
+          <figure class="post st"><span class="ph-l">Story</span><figcaption><span class="t-en">Saihat Society · awareness campaign</span><span class="t-ar">جمعية سيهات · حملة توعوية</span></figcaption></figure>
+          <figure class="post pt"><span class="ph-l">Post</span><figcaption><span class="t-en">Al Abbas Trading · campaign</span><span class="t-ar">شركة العباس التجارية · حملة</span></figcaption></figure>
+          <figure class="post pt"><span class="ph-l">Post</span><figcaption><span class="t-en">Freelance · brand identity</span><span class="t-ar">عمل حر · هوية بصرية</span></figcaption></figure>
+          <figure class="post sq"><span class="ph-l">Post</span><figcaption><span class="t-en">Ajiad Bakery · menu feature</span><span class="t-ar">مخبز أجياد · قائمة</span></figcaption></figure>
+          <figure class="post st"><span class="ph-l">Story</span><figcaption><span class="t-en">Freelance · event poster</span><span class="t-ar">عمل حر · ملصق فعالية</span></figcaption></figure>
+        </div>
+        <div class="posts-foot">
+          <div class="stat">100+<small><span class="t-en">creative assets since 2018</span><span class="t-ar">تصميم منذ 2018</span></small></div>
+          <a class="btn ghost" href="#"><span class="t-en">See more on Behance</span><span class="t-ar">المزيد على Behance</span></a>
+        </div>
+      </div>
+
+      <!-- Book design -->
+      <div class="sub" id="books">
+        <div class="sub-head"><span class="tag">D</span>
+          <h3><span class="t-en">Book design</span><span class="t-ar">تصميم الكتب</span></h3>
+          <p><span class="t-en">Print and editorial work. Open a book and flip through it.</span><span class="t-ar">أعمال الطباعة والنشر. افتح الكتاب وقلّب صفحاته.</span></p>
+        </div>
+        <div class="books" id="books-row"></div>
+      </div>
+
+      <!-- Games -->
+      <div class="sub" id="games">
+        <div class="sub-head"><span class="tag">E</span>
+          <h3><span class="t-en">Games</span><span class="t-ar">الألعاب</span></h3>
+          <p><span class="t-en">Don't just read about it. Play a mini version.</span><span class="t-ar">لا تقرأ عنها فقط، جرّب نسخة مصغّرة.</span></p>
+        </div>
+        <div class="game-wrap" id="game-row"></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ================= EXPERIENCE ================= -->
+  <section id="experience">
+    <div class="wrap">
+      <div class="sec-head"><h2>Experience</h2><div class="kw" data-k="الخب|رات"></div></div>
+      <ul class="rows">
+        <li><span class="when"><span class="t-en">2026 – now</span><span class="t-ar">2026 – الآن</span></span><div>
+          <h3><span class="t-en">Intern, AnaQadha</span><span class="t-ar">متدربة، AnaQadha</span></h3>
+          <p><span class="t-en">Reviewing platform systems and user experience across user roles at an HR-as-a-Service and workforce intelligence startup.</span><span class="t-ar">مراجعة أنظمة المنصة وتجربة المستخدم عبر أدوار المستخدمين المختلفة في شركة ناشئة للموارد البشرية كخدمة وذكاء القوى العاملة.</span></p></div></li>
+        <li><span class="when"><span class="t-en">Dec 2018 – now</span><span class="t-ar">ديسمبر 2018 – الآن</span></span><div>
+          <h3><span class="t-en">Freelance graphic designer</span><span class="t-ar">مصممة جرافيك مستقلة</span></h3>
+          <p><span class="t-en">100+ creative assets for branding and social media clients.</span><span class="t-ar">أكثر من 100 تصميم لعملاء في الهوية البصرية ووسائل التواصل.</span></p></div></li>
+        <li><span class="when"><span class="t-en">Jun 2021 – Nov 2022</span><span class="t-ar">يونيو 2021 – نوفمبر 2022</span></span><div>
+          <h3><span class="t-en">Assistant, Al Abbas Trading Company</span><span class="t-ar">مساعدة، شركة العباس التجارية</span></h3>
+          <p><span class="t-en">Coordinated the company's social media.</span><span class="t-ar">تنسيق حسابات الشركة على وسائل التواصل.</span></p></div></li>
+        <li><span class="when"><span class="t-en">Mar – Aug 2022</span><span class="t-ar">مارس – أغسطس 2022</span></span><div>
+          <h3><span class="t-en">Social media designer, Ajiad Bakery</span><span class="t-ar">مصممة محتوى، مخبز أجياد</span></h3>
+          <p><span class="t-en">Designed content for the bakery's social channels.</span><span class="t-ar">تصميم محتوى قنوات المخبز على وسائل التواصل.</span></p></div></li>
+      </ul>
+    </div>
+  </section>
+
+  <!-- ================= SKILLS ================= -->
+  <section id="skills">
+    <div class="wrap">
+      <div class="sec-head"><h2>Skills</h2><div class="kw" data-k="المه|ارات"></div></div>
+      <div class="cols">
+        <div><h3><span class="t-en">Design</span><span class="t-ar">التصميم</span></h3><ul>
+          <li>Figma</li>
+          <li><span class="t-en">User research &amp; personas</span><span class="t-ar">أبحاث المستخدمين والشخصيات</span></li>
+          <li><span class="t-en">Prototyping</span><span class="t-ar">النماذج الأولية</span></li>
+          <li><span class="t-en">Usability testing</span><span class="t-ar">اختبار قابلية الاستخدام</span></li>
+          <li><span class="t-en">Graphic design</span><span class="t-ar">التصميم الجرافيكي</span></li></ul></div>
+        <div><h3><span class="t-en">Frontend</span><span class="t-ar">الواجهات</span></h3><ul>
+          <li>HTML5</li><li>CSS3</li><li>JavaScript</li>
+          <li><span class="t-en">Responsive, bilingual UI</span><span class="t-ar">واجهات متجاوبة ثنائية اللغة</span></li></ul></div>
+        <div><h3><span class="t-en">Backend</span><span class="t-ar">الخلفية</span></h3><ul><li>Python</li><li>Flask</li><li>SQL</li></ul></div>
+        <div><h3><span class="t-en">Tools</span><span class="t-ar">الأدوات</span></h3><ul><li>Git</li><li>CI/CD</li><li>Unity</li></ul></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ================= EDUCATION + VOLUNTEERING ================= -->
+  <section id="education">
+    <div class="wrap two">
+      <div>
+        <div class="sec-head"><h2>Education</h2><div class="kw" data-k="التع|ليم"></div></div>
+        <ul class="rows">
+          <li><span class="when">2026</span><div>
+            <h3><span class="t-en">BSc Computer Science with HCI</span><span class="t-ar">بكالوريوس علوم الحاسب مع تفاعل الإنسان والحاسب</span></h3>
+            <p><span class="t-en">Newcastle University · First Class Honours · Student orator at graduation</span><span class="t-ar">جامعة نيوكاسل · مرتبة الشرف الأولى · خطيبة الطلاب في حفل التخرج</span></p></div></li>
+          <li><span class="when"><span class="t-en">Languages</span><span class="t-ar">اللغات</span></span><div>
+            <h3><span class="t-en">Arabic, English, Spanish</span><span class="t-ar">العربية، الإنجليزية، الإسبانية</span></h3>
+            <p><span class="t-en">Native · Fluent · Beginner (A1)</span><span class="t-ar">اللغة الأم · طلاقة · مبتدئة (A1)</span></p></div></li>
+        </ul>
+      </div>
+      <div>
+        <div class="sec-head"><h2>Volunteering</h2><div class="kw" data-k="التط|وع"></div></div>
+        <ul class="rows">
+          <li><span class="when"><span class="t-en">Jan – Feb 2022</span><span class="t-ar">يناير – فبراير 2022</span></span><div>
+            <h3><span class="t-en">Volunteer leader</span><span class="t-ar">قائدة متطوعين</span></h3>
+            <p><span class="t-en">Saudi Darkov Vaccination Centre, COVID-19 operations</span><span class="t-ar">مركز Saudi Darkov للتطعيم، عمليات كوفيد-19</span></p></div></li>
+          <li><span class="when"><span class="t-en">Mar – Dec 2020</span><span class="t-ar">مارس – ديسمبر 2020</span></span><div>
+            <h3><span class="t-en">Media assistant</span><span class="t-ar">مساعدة إعلامية</span></h3>
+            <p><span class="t-en">Saihat Society for Social Services, awareness campaigns</span><span class="t-ar">جمعية سيهات للخدمات الاجتماعية، حملات توعوية</span></p></div></li>
+          <li><span class="when"><span class="t-en">Jul 2019</span><span class="t-ar">يوليو 2019</span></span><div>
+            <h3><span class="t-en">Student representative</span><span class="t-ar">ممثلة الطلاب</span></h3>
+            <p>CES Toronto</p></div></li>
+        </ul>
+      </div>
+    </div>
+  </section>
+
+  <!-- ================= CONTACT ================= -->
+  <section id="contact">
+    <div class="wrap contact">
+      <div class="sec-head"><h2>Contact</h2><div class="kw" data-k="تواص|ل"></div></div>
+      <p class="big"><span class="t-en">Looking for graduate roles in software engineering, frontend and UX.</span><span class="t-ar">أبحث عن فرص لحديثي التخرج في هندسة البرمجيات والواجهات وتجربة المستخدم.</span></p>
+      <div class="contact-row">
+        <span class="email" id="email">your.email@example.com</span>
+        <button class="btn" id="copy" type="button"><span class="t-en">Copy email</span><span class="t-ar">نسخ البريد</span></button>
+        <a class="btn ghost" href="#"><span class="t-en">Download CV</span><span class="t-ar">تحميل السيرة الذاتية</span></a>
+      </div>
+      <div class="socials"><a href="#">LinkedIn</a><a href="#">GitHub</a><a href="#">Behance</a></div>
+    </div>
+  </section>
+</main>
+
+<footer><div class="wrap"><span><span class="t-en">© 2026 Lujain</span><span class="t-ar">© 2026 لجين</span></span><span class="ar">صُمم وبُني بيدي</span></div></footer>
+
+<dialog id="dlg" aria-labelledby="dlg-title"><div class="dlg" id="dlg-body"></div></dialog>
+
+<script>
+/* ===================================================================
+   EDIT YOUR PROJECTS HERE (English + Arabic)
+   sketch / screen: put image paths, e.g. "img/pawtener-sketch.png". Leave "" to show a placeholder.
+   color: the project's accent.   layout: placeholder sketch style ("profile" | "feed" | "dash")
+   audience: icon keys → elder, home, people, paw, clock, cap, pulse, heart, basket, code, pad
+   =================================================================== */
+const PROJECTS = [
+  { id:"halihome", group:"uiux", title:"HaliHome", arName:"بيت هلي", color:"#d9734e", layout:"feed", sketch:"", screen:"",
+    audience:[["elder","Older adults","كبار السن"],["home","Their families","عائلاتهم"],["people","Relatives far away","الأقارب البعيدون"]],
+    en:{ context:"Final-year dissertation", award:"First Class · 73", role:"Researcher, designer, developer", tools:["UX research","Figma","Accessibility"],
+      desc:"My dissertation. HaliHome explores how family-centred design can support emotional connection for older adults, through accessible, familiar interactions that keep families close.",
+      problem:"Older adults can feel distant from family as digital life speeds up. How might technology support emotional connection, not just contact?",
+      process:"Literature review in gerontechnology, user research, design of a family-centred prototype, and evaluation.",
+      outcome:"Prototype platform and dissertation graded First Class (73)." },
+    ar:{ context:"مشروع التخرج", award:"مرتبة أولى · 73", role:"باحثة ومصممة ومطوّرة", tools:["أبحاث المستخدمين","Figma","إمكانية الوصول"],
+      desc:"مشروع تخرجي. يستكشف بيت هلي كيف يمكن للتصميم المتمحور حول العائلة أن يدعم التواصل العاطفي لكبار السن، عبر تفاعلات مألوفة وسهلة الوصول تُبقي العائلة قريبة.",
+      problem:"قد يشعر كبار السن بالبعد عن عائلاتهم مع تسارع الحياة الرقمية. كيف يمكن للتقنية أن تدعم التواصل العاطفي، لا مجرد الاتصال؟",
+      process:"مراجعة أدبيات تقنيات كبار السن، وأبحاث المستخدمين، وتصميم نموذج أولي يتمحور حول العائلة، ثم تقييمه.",
+      outcome:"نموذج أولي للمنصة، ورسالة تخرج بدرجة مرتبة أولى (73)." } },
+  { id:"pawtener", group:"uiux", title:"Pawtener", color:"#f28a1e", layout:"profile", sketch:"", screen:"",
+    audience:[["paw","Pet owners","أصحاب الحيوانات"],["clock","Busy schedules","أصحاب الجداول المزدحمة"],["people","Pet sitters","جليسو الحيوانات"]],
+    en:{ context:"HCI module", award:"First Class", role:"UX designer", tools:["Personas","Figma","Mobile"],
+      desc:"A mobile app for pet owners, with pet profiles, personality tags, photo galleries and reviews from sitters. Six personas shaped every screen, from the first paper sketch to the final prototype.",
+      problem:"Placeholder: the pet owner pain points you found.", process:"Six personas, user flows, paper sketches, then high-fidelity Figma prototypes.", outcome:"Graded First Class." },
+    ar:{ context:"مادة تفاعل الإنسان والحاسب", award:"مرتبة أولى", role:"مصممة تجربة المستخدم", tools:["الشخصيات","Figma","الجوال"],
+      desc:"تطبيق جوال لأصحاب الحيوانات الأليفة: ملفات للحيوانات، وسمات شخصيتها، ومعرض صور، وتقييمات من الجليسين. ست شخصيات مستخدمين شكّلت كل شاشة، من أول رسمة على الورق إلى النموذج النهائي.",
+      problem:"اكتبي هنا: نقاط الألم التي وجدتِها لدى أصحاب الحيوانات.", process:"ست شخصيات مستخدمين، ومسارات استخدام، ورسومات ورقية، ثم نماذج Figma عالية الدقة.", outcome:"حصل على مرتبة أولى." } },
+  { id:"helpmyhealth", group:"uiux", title:"HelpMyHealth", color:"#2fa36b", layout:"dash", sketch:"", screen:"",
+    audience:[["pulse","Habit builders","من يبني عادات صحية"],["heart","Health-conscious users","المهتمون بصحتهم"]],
+    en:{ context:"Software Engineering module", award:"Best Team Project", role:"Frontend lead + backend logic", tools:["Figma","HTML/CSS","Python"],
+      desc:"A habit and health tracker built as a team. I led the frontend from Figma to HTML/CSS and wrote the backend logic for habits, input validation and calorie calculations.",
+      problem:"Placeholder: what problem did the team set out to solve?",
+      process:"Designed the UI in Figma, built it in HTML5/CSS3, and implemented habit CRUD, input validation and calorie calculations.",
+      outcome:"Won the Fairstone Best Team Project Award." },
+    ar:{ context:"مادة هندسة البرمجيات", award:"أفضل مشروع جماعي", role:"قائدة الواجهات ومنطق الخلفية", tools:["Figma","HTML/CSS","Python"],
+      desc:"تطبيق لتتبع العادات والصحة بُني ضمن فريق. قدت تطوير الواجهات من Figma إلى HTML/CSS، وكتبت منطق الخلفية للعادات والتحقق من المدخلات وحساب السعرات.",
+      problem:"اكتبي هنا: ما المشكلة التي سعى الفريق لحلها؟",
+      process:"صممت الواجهة في Figma، وبنيتها بـ HTML5/CSS3، وطوّرت إدارة العادات والتحقق من المدخلات وحساب السعرات.",
+      outcome:"فاز بجائزة Fairstone لأفضل مشروع جماعي." } },
+  { id:"uniquest", group:"uiux", title:"UniQuest", color:"#6b5bd6", layout:"feed", sketch:"", screen:"",
+    audience:[["cap","University students","طلاب الجامعات"],["people","New students","الطلاب الجدد"]],
+    en:{ context:"HCI coursework", role:"UX designer", tools:["Gamification","Usability testing"],
+      desc:"A gamified social platform for university students, refined through rounds of usability testing.",
+      problem:"Placeholder: why students needed it.", process:"Concept, prototype, and rounds of usability testing.", outcome:"Placeholder: key findings and what changed." },
+    ar:{ context:"مشروع تفاعل الإنسان والحاسب", role:"مصممة تجربة المستخدم", tools:["التلعيب","اختبار قابلية الاستخدام"],
+      desc:"منصة اجتماعية بأسلوب الألعاب لطلاب الجامعات، طُوّرت عبر جولات من اختبارات قابلية الاستخدام.",
+      problem:"اكتبي هنا: لماذا احتاجها الطلاب.", process:"فكرة، ثم نموذج أولي، ثم جولات من اختبارات قابلية الاستخدام.", outcome:"اكتبي هنا: أهم النتائج وما الذي تغيّر." } },
+  { id:"ligrocery", group:"dev", title:"LiGrocery", color:"#0f8792",
+    audience:[["basket","Online shoppers","المتسوقون عبر الإنترنت"],["code","Dev teams","فرق التطوير"]],
+    en:{ context:"DevOps module", award:"First Class", role:"Developer", tools:["Python","Flask","SQL","Git","CI/CD"],
+      desc:"A Flask grocery web app built to practise real delivery: Git workflows, a SQL data layer and a CI/CD pipeline that takes every change from commit to deploy.",
+      problem:"Placeholder: what the app does for shoppers.", process:"Flask backend, SQL data layer, Git branching and a CI/CD pipeline.", outcome:"Graded First Class." },
+    ar:{ context:"مادة DevOps", award:"مرتبة أولى", role:"مطوّرة", tools:["Python","Flask","SQL","Git","CI/CD"],
+      desc:"تطبيق ويب للبقالة بـ Flask بُني لممارسة النشر الحقيقي: سير عمل Git، وطبقة بيانات SQL، وخط CI/CD ينقل كل تغيير من الحفظ إلى النشر.",
+      problem:"اكتبي هنا: ما الذي يقدمه التطبيق للمتسوقين.", process:"واجهة خلفية بـ Flask، وطبقة بيانات SQL، وفروع Git، وخط CI/CD.", outcome:"حصل على مرتبة أولى." } },
+  /* Books: pages = list of image paths in order (cover first). Leave [] to show `count` placeholder pages. */
+  { id:"storybook", group:"book", title:"Kids storybook", arTitle:"قصة أطفال", color:"#e5789c", style:"story", count:10, pages:[],
+    audience:[["kid","Young readers","القرّاء الصغار"],["home","Parents","الآباء والأمهات"]],
+    en:{ context:"Children's book", tools:["Layout","Typography","Print"],
+      desc:"A children's storybook I designed, from the cover to the inside pages. Flip through a few spreads." },
+    ar:{ context:"كتاب أطفال", tools:["التخطيط","الطباعة","الخطوط"],
+      desc:"قصة مصوّرة للأطفال صمّمتها من الغلاف إلى الصفحات الداخلية. قلّب بعض الصفحات." } },
+  { id:"notebook", group:"book", title:"Notebook", arTitle:"دفتر", color:"#3f6fd8", style:"note", count:8, pages:[],
+    audience:[["cap","Students","الطلاب"],["pen","Note-takers","محبو التدوين"]],
+    en:{ context:"Stationery design", tools:["Layout","Print"],
+      desc:"A notebook I designed, from the cover to the inside pages." },
+    ar:{ context:"تصميم قرطاسية", tools:["التخطيط","الطباعة"],
+      desc:"دفتر صمّمته من الغلاف إلى الصفحات الداخلية." } },
+  { id:"hungrymind", group:"game", title:"HungryMind", color:"#e3655b",
+    audience:[["pad","Puzzle lovers","محبو الألغاز"],["clock","Players who like a challenge","محبو التحدي"]],
+    en:{ context:"Unity project", role:"Designer & developer", tools:["Unity","C#","Game design"],
+      desc:"A single-player 2D puzzle game built in Unity. Remember what you saw, then beat the clock. Try the mini version.",
+      problem:"Placeholder: the game idea.", process:"Memory-based mechanics with time pressure, built in Unity.", outcome:"Placeholder: playable build link." },
+    ar:{ context:"مشروع Unity", role:"مصممة ومطوّرة", tools:["Unity","C#","تصميم الألعاب"],
+      desc:"لعبة ألغاز ثنائية الأبعاد للاعب واحد مبنية في Unity. تذكّر ما رأيت، ثم اسبق الوقت. جرّب النسخة المصغّرة.",
+      problem:"اكتبي هنا: فكرة اللعبة.", process:"آليات قائمة على الذاكرة تحت ضغط الوقت، مبنية في Unity.", outcome:"اكتبي هنا: رابط النسخة القابلة للعب." } }
+];
+
+const ICONS = {
+  elder:'<circle cx="12" cy="4.5" r="1.8"/><path d="M5 8.5h14M12 8.5v6l-3.5 6M12 14.5l3.5 6"/>',
+  home:'<path d="M3.5 11 12 4l8.5 7v9h-5.5v-6h-6v6H3.5z"/>',
+  people:'<circle cx="9" cy="8" r="3"/><path d="M3 20c0-3.3 2.7-6 6-6s6 2.7 6 6"/><circle cx="17" cy="9" r="2.4"/><path d="M15.5 14.4c3 0 5.5 2.2 5.5 5.6"/>',
+  paw:'<circle cx="6.5" cy="10" r="1.9" fill="currentColor"/><circle cx="10" cy="6" r="1.9" fill="currentColor"/><circle cx="14" cy="6" r="1.9" fill="currentColor"/><circle cx="17.5" cy="10" r="1.9" fill="currentColor"/><path d="M12 11.5c-3 0-5 3.6-5 5.6 0 1.6 1.4 2.4 2.6 2.1 1-.3 1.6-.7 2.4-.7s1.4.4 2.4.7c1.2.3 2.6-.5 2.6-2.1 0-2-2-5.6-5-5.6z" fill="currentColor"/>',
+  clock:'<circle cx="12" cy="12" r="8.5"/><path d="M12 7.5V12l3 2"/>',
+  cap:'<path d="M2 9.5 12 5l10 4.5-10 4.5z"/><path d="M6 11.5v4.5c3.5 2.4 8.5 2.4 12 0v-4.5"/>',
+  pulse:'<path d="M3 12h4l2-5 4 10 2-5h6"/>',
+  heart:'<path d="M12 20s-7.5-4.6-7.5-10.2A4.2 4.2 0 0 1 12 7.4a4.2 4.2 0 0 1 7.5 2.4C19.5 15.4 12 20 12 20z"/>',
+  basket:'<path d="M4 9.5h16l-2 10H6z"/><path d="M8.5 9.5 12 4l3.5 5.5"/>',
+  kid:'<circle cx="12" cy="12" r="8.5"/><path d="M8.5 14.5c1.8 2 5.2 2 7 0"/><circle cx="9" cy="10" r="1" fill="currentColor"/><circle cx="15" cy="10" r="1" fill="currentColor"/>',
+  pen:'<path d="M4 20l4-1 11-11-3-3L5 16z"/><path d="M14 7l3 3"/>',
+  code:'<path d="M8.5 7.5 4 12l4.5 4.5M15.5 7.5 20 12l-4.5 4.5"/>',
+  pad:'<rect x="2.5" y="7.5" width="19" height="10" rx="5"/><path d="M7.5 10.5v4M5.5 12.5h4"/><circle cx="15.5" cy="11.5" r="1" fill="currentColor"/><circle cx="17.5" cy="13.5" r="1" fill="currentColor"/>'
+};
+const icon = k => `<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">${ICONS[k]||''}</svg>`;
+
+const UI = {
+  sketch:{en:"v0 · paper sketch",ar:"المسودة الأولى"}, final:{en:"final",ar:"النهائي"}, finalPh:{en:"Final screen",ar:"الشاشة النهائية"},
+  sticker:{en:"SEE THE FULL STORY · SEE THE FULL STORY · ",ar:"شاهد القصة كاملة · شاهد القصة كاملة · "},
+  go:{en:"Open case study",ar:"افتح دراسة الحالة"}, role:{en:"Role",ar:"الدور"}, tools:{en:"Tools",ar:"الأدوات"}, result:{en:"Result",ar:"النتيجة"},
+  for:{en:"Designed for",ar:"صُمّم لـ"}, hero:{en:"Hero image or prototype video",ar:"صورة أو فيديو للنموذج"},
+  problem:{en:"Problem",ar:"المشكلة"}, process:{en:"Process",ar:"المنهجية"}, outcome:{en:"Outcome",ar:"الأثر"},
+  study:{en:"Full case study",ar:"دراسة الحالة كاملة"}, proto:{en:"Prototype",ar:"النموذج الأولي"}, code:{en:"Code",ar:"الكود"}, close:{en:"Close",ar:"إغلاق"},
+  copied:{en:"Copied",ar:"تم النسخ"}, selected:{en:"Selected · press Ctrl+C",ar:"تم التحديد · اضغط Ctrl+C"},
+  gameIdle:{en:"Flip two cards to start the clock.",ar:"اقلب بطاقتين ليبدأ الوقت."}, gameWin:{en:"You beat the clock! ⭐",ar:"سبقت الوقت! ⭐"},
+  gameLose:{en:"Time's up. One more go?",ar:"انتهى الوقت. محاولة أخرى؟"}, gamePlay:{en:"Find all four pairs.",ar:"اعثر على الأزواج الأربعة."},
+  cover:{en:"Cover",ar:"الغلاف"}, illus:{en:"Illustration",ar:"رسمة"},
+  prevPage:{en:"Previous page",ar:"الصفحة السابقة"}, nextPage:{en:"Next page",ar:"الصفحة التالية"},
+  flipHint:{en:"Click a page or use the arrows to flip",ar:"اضغط على الصفحة أو استخدم الأسهم للتقليب"},
+  again:{en:"Play again",ar:"العب مجددًا"}, play:{en:"About the game",ar:"عن اللعبة"}
+};
+
+(function(){
+  const html=document.documentElement, T='ـ';
+  const reduce=matchMedia('(prefers-reduced-motion: reduce)').matches;
+  const esc=s=>String(s).replace(/[&<>"]/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;'}[c]));
+  const AR_DIG='٠١٢٣٤٥٦٧٨٩';
+  let lang='en', openId=null;
+  const star='<i class="star-shape" aria-hidden="true"></i>';
+  const numStr=n=>{const s=String(n).padStart(2,'0');return lang==='ar'?s.replace(/\d/g,d=>AR_DIG[d]):s};
+
+  /* ---------- Placeholder sketch (hand-drawn wireframe) ---------- */
+  function sketchSVG(layout){
+    let g='';
+    if(layout==='profile'){
+      g='<path d="M20 40l10-8m-10 8l10 8"/><circle cx="100" cy="95" r="38"/><path d="M62 150h76"/>'+
+        [20,75,130].map(x=>`<rect x="${x}" y="170" width="50" height="22" rx="5"/>`).join('')+
+        '<path d="M20 215h160M20 235h120"/>'+[20,76,132].map(x=>`<rect x="${x}" y="260" width="48" height="48" rx="4"/>`).join('')+
+        '<rect x="20" y="325" width="75" height="70" rx="6"/><rect x="105" y="325" width="75" height="70" rx="6"/>';
+    } else if(layout==='dash'){
+      g='<path d="M20 40h80"/><circle cx="175" cy="40" r="9"/><circle cx="100" cy="125" r="50"/><path d="M100 75a50 50 0 0 1 48 62" stroke-width="6"/><path d="M80 125h40"/>'+
+        [0,1,2,3,4].map(i=>{const h=[40,70,55,85,60][i];return `<rect x="${30+i*30}" y="${300-h}" width="18" height="${h}" rx="3"/>`}).join('')+
+        '<path d="M20 305h160"/>'+[335,362,389].map(y=>`<rect x="20" y="${y-9}" width="14" height="14" rx="3"/><path d="M44 ${y-2}h${y===389?90:130}"/>`).join('');
+    } else {
+      g='<path d="M20 40h60"/><circle cx="172" cy="40" r="10"/><rect x="20" y="65" width="160" height="26" rx="13"/>'+
+        [110,210,310].map(y=>`<rect x="20" y="${y}" width="160" height="85" rx="8"/><circle cx="45" cy="${y+25}" r="12"/><path d="M66 ${y+20}h90M66 ${y+34}h60M32 ${y+60}h136"/>`).join('');
+    }
+    return `<svg class="sk" viewBox="0 0 200 420" preserveAspectRatio="xMidYMid slice" aria-hidden="true"><g fill="none" stroke="var(--pencil)" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" filter="url(#rough)">${g}</g></svg>`;
+  }
+  const finalPH=()=>`<div class="fp"><span>${UI.finalPh[lang]}</span><i class="av"></i><i class="l w7"></i><i class="l w5"></i><div class="cards"><i></i><i></i><i></i><i></i></div></div>`;
+
+  const audHTML=p=>`<div class="aud">${p.audience.map(a=>`<span>${icon(a[0])}${esc(lang==='ar'?a[2]:a[1])}</span>`).join('')}</div>`;
+  const metaHTML=(d)=>`<dl><dt>${UI.role[lang]}</dt><dd>${esc(d.role)}</dd><dt>${UI.for[lang]}</dt><dd></dd></dl>`;
+
+  /* ---------- UI/UX rows ---------- */
+  const uiList=document.getElementById('uiux-list');
+  function renderUI(){
+    const items=PROJECTS.filter(p=>p.group==='uiux');
+    document.getElementById('c-uiux').textContent=items.length;
+    uiList.innerHTML=items.map(p=>{
+      const d=p[lang], n=PROJECTS.indexOf(p)+1;
+      return `<article class="proj" style="--pc:${p.color}">
+        <button class="stage" type="button" data-open="${p.id}" aria-label="${esc(p.title)}: ${UI.go[lang]}">
+          <div class="phone sketch">${p.sketch?`<img src="${esc(p.sketch)}" alt="">`:sketchSVG(p.layout)}</div>
+          <div class="phone final">${p.screen?`<img src="${esc(p.screen)}" alt="">`:finalPH()}</div>
+          <span class="phone-tag a">${UI.sketch[lang]}</span><span class="phone-tag b">${UI.final[lang]} →</span>
+          <span class="sticker" aria-hidden="true"><svg viewBox="0 0 120 120">
+            <circle cx="60" cy="60" r="58" fill="${p.color}"/>
+            <g class="ring"><defs><path id="cp-${p.id}" d="M60 60m-43 0a43 43 0 1 1 86 0a43 43 0 1 1-86 0"/></defs>
+            <text><textPath href="#cp-${p.id}">${UI.sticker[lang]}</textPath></text></g>
+            <path d="M48 72 72 48M54 48h18v18" fill="none" stroke="#fff" stroke-width="4" stroke-linecap="round" stroke-linejoin="round" ${lang==='ar'?'transform="matrix(-1 0 0 1 120 0)"':''}/>
+          </svg></span>
+        </button>
+        <div class="info">
+          <div class="num" aria-hidden="true">${numStr(n)}</div>
+          <span class="label">${esc(d.context)}</span>
+          <h4>${esc(p.title)}${p.arName?`<span class="ar">${esc(p.arName)}</span>`:''}</h4>
+          ${d.award?`<span class="award-chip">${star}${esc(d.award)}</span>`:''}
+          <p>${esc(d.desc)}</p>
+          <dl><dt>${UI.role[lang]}</dt><dd>${esc(d.role)}</dd></dl>
+          <div><div class="label" style="margin-bottom:8px">${UI.for[lang]}</div>${audHTML(p)}</div>
+          <div class="tools">${d.tools.map(t=>`<span>${esc(t)}</span>`).join('')}</div>
+          <button class="go" type="button" data-open="${p.id}">${UI.go[lang]} <span class="arrow">→</span></button>
+        </div>
+      </article>`}).join('');
+  }
+
+  /* ---------- Development row ---------- */
+  const devRow=document.getElementById('dev-row');
+  function renderDev(){
+    const p=PROJECTS.find(x=>x.group==='dev'), d=p[lang], n=PROJECTS.indexOf(p)+1;
+    devRow.style.setProperty('--pc',p.color);
+    devRow.innerHTML=`
+      <div class="term" aria-label="Terminal illustration of the build pipeline">
+        <div class="term-bar"><i></i><i></i><i></i></div>
+        <div class="term-body">
+          <div><span class="p">~/ligrocery</span> <span class="c">(main)</span></div>
+          <div><span class="p">$</span> flask run</div>
+          <div class="c"># Python · Flask · SQL</div>
+          <div><span class="p">$</span> git push origin main</div>
+          <div class="c"># CI/CD pipeline</div>
+          <div class="pipe" id="pipe"><span>commit</span><span>test</span><span>build</span><span>deploy</span></div>
+          <div style="margin-top:10px"><span class="p">$</span> <span class="cursor"></span></div>
+        </div>
+      </div>
+      <div class="info proj" style="--pc:${p.color};padding:0;border:0;display:grid">
+        <div class="num" aria-hidden="true">${numStr(n)}</div>
+        <span class="label">${esc(d.context)}</span>
+        <h4>${esc(p.title)}</h4>
+        ${d.award?`<span class="award-chip">${star}${esc(d.award)}</span>`:''}
+        <p>${esc(d.desc)}</p>
+        <div><div class="label" style="margin-bottom:8px">${UI.for[lang]}</div>${audHTML(p)}</div>
+        <div class="tools">${d.tools.map(t=>`<span>${esc(t)}</span>`).join('')}</div>
+        <button class="go" type="button" data-open="${p.id}">${UI.go[lang]} <span class="arrow">→</span></button>
+      </div>`;
+  }
+  function runPipe(){
+    const steps=[...document.querySelectorAll('#pipe span')]; if(!steps.length) return;
+    steps.forEach(s=>s.className='');
+    if(reduce){steps.forEach(s=>s.className='ok');return}
+    steps.forEach((s,i)=>{setTimeout(()=>{s.className='run';setTimeout(()=>s.className='ok',550)},i*700)});
+  }
+
+  /* ---------- Game row + mini memory game ---------- */
+  const gameRow=document.getElementById('game-row');
+  const SHAPES={
+    sun:'<circle cx="12" cy="12" r="7" fill="#f2bd1d"/>',
+    tri:'<path d="M12 3 21 20H3z" fill="#e3655b"/>',
+    sq:'<rect x="4" y="4" width="16" height="16" rx="3" fill="#0f8792"/>',
+    st:'<path d="M12 2.5l2.7 6 6.5.6-4.9 4.3 1.5 6.4L12 16.5l-5.8 3.3 1.5-6.4L2.8 9.1l6.5-.6z" fill="#6b5bd6"/>'
+  };
+  let deck=[], first=null, lock=false, matched=0, left=30, tick=null, state='idle';
+  function setMsg(){const m=document.getElementById('gmsg'); if(m) m.textContent=UI[state==='idle'?'gameIdle':state==='win'?'gameWin':state==='lose'?'gameLose':'gamePlay'][lang]}
+  function renderGame(){
+    const p=PROJECTS.find(x=>x.group==='game'), d=p[lang], n=PROJECTS.indexOf(p)+1;
+    gameRow.innerHTML=`
+      <div class="game">
+        <div class="game-top"><span class="label">HungryMind · mini</span><span class="timer" id="timer">00:30</span></div>
+        <div class="board" id="board"></div>
+        <div class="game-msg" id="gmsg" aria-live="polite"></div>
+        <button class="btn ghost again" id="again" type="button">${UI.again[lang]}</button>
+      </div>
+      <div class="info proj" style="--pc:${p.color};padding:0;border:0;display:grid">
+        <div class="num" aria-hidden="true">${numStr(n)}</div>
+        <span class="label">${esc(d.context)}</span>
+        <h4>${esc(p.title)}</h4>
+        <p>${esc(d.desc)}</p>
+        <div><div class="label" style="margin-bottom:8px">${UI.for[lang]}</div>${audHTML(p)}</div>
+        <div class="tools">${d.tools.map(t=>`<span>${esc(t)}</span>`).join('')}</div>
+        <button class="go" type="button" data-open="${p.id}">${UI.play[lang]} <span class="arrow">→</span></button>
+      </div>`;
+    drawBoard(); setMsg(); updTimer();
+    document.getElementById('again').onclick=newGame;
+  }
+  function newGame(){
+    clearInterval(tick); tick=null; first=null; lock=false; matched=0; left=30; state='idle';
+    deck=Object.keys(SHAPES).flatMap(k=>[k,k]).map(k=>({k,up:false,done:false}));
+    for(let i=deck.length-1;i>0;i--){const j=Math.floor(Math.random()*(i+1));[deck[i],deck[j]]=[deck[j],deck[i]]}
+    drawBoard(); setMsg(); updTimer();
+  }
+  function updTimer(){const t=document.getElementById('timer'); if(!t) return; t.textContent='00:'+String(left).padStart(2,'0'); t.classList.toggle('low',left<=10&&state==='play')}
+  function drawBoard(){
+    const b=document.getElementById('board'); if(!b) return;
+    b.innerHTML=deck.map((c,i)=>`<button class="tile ${c.up?'up':''} ${c.done?'done':''}" type="button" data-i="${i}" aria-label="Card ${i+1}"><span class="in"><span class="b"></span><span class="f"><svg viewBox="0 0 24 24">${SHAPES[c.k]}</svg></span></span></button>`).join('');
+    b.onclick=e=>{
+      const t=e.target.closest('.tile'); if(!t||lock||state==='win'||state==='lose') return;
+      const i=+t.dataset.i, c=deck[i]; if(c.up||c.done) return;
+      if(state==='idle'){state='play';setMsg();tick=setInterval(()=>{left--;updTimer();if(left<=0){clearInterval(tick);state='lose';setMsg();deck.forEach(x=>x.up=true);syncTiles()}},1000)}
+      c.up=true; t.classList.add('up');
+      if(first===null){first=i;return}
+      const a=deck[first]; lock=true;
+      if(a.k===c.k){a.done=c.done=true;matched++;first=null;lock=false;syncTiles();
+        if(matched===4){clearInterval(tick);state='win';setMsg()}}
+      else setTimeout(()=>{a.up=c.up=false;first=null;lock=false;syncTiles()},650);
+    };
+  }
+  function syncTiles(){document.querySelectorAll('#board .tile').forEach((t,i)=>{t.classList.toggle('up',deck[i].up);t.classList.toggle('done',deck[i].done)})}
+
+  /* ---------- Books: open book with page flips ---------- */
+  const booksEl=document.getElementById('books-row');
+  const PASTELS=['#fde2c8','#d8efe6','#f9d5e0','#dfe3fb','#fff1b8'];
+  let bk=0, sp=0, flipping=false;
+  const bookList=()=>PROJECTS.filter(p=>p.group==='book');
+  const bookLen=b=>b.pages&&b.pages.length?b.pages.length:b.count;
+  const spreads=b=>Math.ceil(bookLen(b)/2);
+  const sideA=()=>html.dir==='rtl'?'r':'l', sideB=()=>html.dir==='rtl'?'l':'r';
+  const digits=n=>lang==='ar'?String(n).replace(/\d/g,d=>AR_DIG[d]):String(n);
+  function pageHTML(b,i){
+    if(i<0||i>=bookLen(b)) return '<div class="pg"></div>';
+    if(b.pages&&b.pages[i]) return `<div class="pg"><img class="pg-img" src="${esc(b.pages[i])}" alt=""></div>`;
+    const pn=`<span class="pn">${digits(i)}</span>`, title=lang==='ar'?b.arTitle:b.title;
+    if(i===0) return `<div class="pg cover" style="--bc:${b.color}"><span>${UI.cover[lang]}</span><b>${esc(title)}</b></div>`;
+    if(b.style==='story') return `<div class="pg story" style="--c:${PASTELS[i%5]}"><div class="ill">${UI.illus[lang]}</div><i class="tl"></i><i class="tl s"></i>${pn}</div>`;
+    return `<div class="pg note">${pn}</div>`;
+  }
+  function bookStatic(){
+    const b=bookList()[bk], book=document.getElementById('book'); if(!book) return;
+    book.querySelector('.half.'+sideA()).innerHTML=pageHTML(b,2*sp);
+    book.querySelector('.half.'+sideB()).innerHTML=pageHTML(b,2*sp+1);
+    document.getElementById('bk-count').textContent=digits(sp+1)+' / '+digits(spreads(b));
+    document.getElementById('bk-prev').disabled=sp===0;
+    document.getElementById('bk-next').disabled=sp>=spreads(b)-1;
+  }
+  function renderBooks(){
+    const list=bookList(), b=list[bk], d=b[lang], n=PROJECTS.indexOf(b)+1, title=lang==='ar'?b.arTitle:b.title;
+    flipping=false;
+    booksEl.innerHTML=`<div>
+        <div class="book-tabs" role="group" aria-label="Books">${list.map((x,i)=>`<button type="button" data-bk="${i}" aria-pressed="${i===bk}">${esc(lang==='ar'?x.arTitle:x.title)}</button>`).join('')}</div>
+        <div class="book" id="book"><div class="half l"></div><div class="half r"></div></div>
+        <div class="book-ctrl"><button type="button" id="bk-prev" aria-label="${UI.prevPage[lang]}"><span class="flip-ar">←</span></button><span class="book-count" id="bk-count" aria-live="polite"></span><button type="button" id="bk-next" aria-label="${UI.nextPage[lang]}"><span class="flip-ar">→</span></button></div>
+      </div>
+      <div class="info proj" style="--pc:${b.color};padding:0;border:0;display:grid">
+        <div class="num" aria-hidden="true">${numStr(n)}</div>
+        <span class="label">${esc(d.context)}</span>
+        <h4>${esc(title)}</h4>
+        <p>${esc(d.desc)}</p>
+        <div><div class="label" style="margin-bottom:8px">${UI.for[lang]}</div>${audHTML(b)}</div>
+        <div class="tools">${d.tools.map(t=>`<span>${esc(t)}</span>`).join('')}</div>
+        <span class="label">${UI.flipHint[lang]}</span>
+      </div>`;
+    bookStatic();
+  }
+  function flip(dir){
+    const b=bookList()[bk], book=document.getElementById('book');
+    if(flipping||!book) return;
+    if(dir>0&&sp>=spreads(b)-1) return; if(dir<0&&sp<=0) return;
+    if(reduce){sp+=dir;bookStatic();return}
+    flipping=true;
+    const leafSide=dir>0?sideB():sideA(), other=leafSide==='r'?'l':'r';
+    const front=dir>0?pageHTML(b,2*sp+1):pageHTML(b,2*sp);
+    const back=dir>0?pageHTML(b,2*sp+2):pageHTML(b,2*sp-1);
+    if(dir>0) book.querySelector('.half.'+sideB()).innerHTML=pageHTML(b,2*sp+3);
+    else book.querySelector('.half.'+sideA()).innerHTML=pageHTML(b,2*sp-2);
+    const leaf=document.createElement('div');
+    leaf.className='leaf '+leafSide;
+    leaf.innerHTML=`<div class="face front f${leafSide}">${front}</div><div class="face back f${other}">${back}</div>`;
+    book.appendChild(leaf);
+    let done=false;
+    const finish=()=>{if(done)return;done=true;sp+=dir;leaf.remove();bookStatic();flipping=false};
+    leaf.addEventListener('transitionend',finish,{once:true});
+    setTimeout(finish,1100);
+    requestAnimationFrame(()=>requestAnimationFrame(()=>{leaf.style.transform=`rotateY(${leafSide==='r'?-180:180}deg)`}));
+  }
+  booksEl.addEventListener('click',e=>{
+    const t=e.target.closest('[data-bk]'); if(t){bk=+t.dataset.bk;sp=0;renderBooks();return}
+    if(e.target.closest('#bk-next')) return flip(1);
+    if(e.target.closest('#bk-prev')) return flip(-1);
+    const h=e.target.closest('.half'); if(h) flip(h.classList.contains(sideB())?1:-1);
+  });
+
+  /* ---------- Case study dialog ---------- */
+  const dlg=document.getElementById('dlg'), body=document.getElementById('dlg-body');
+  function renderDialog(){
+    const p=PROJECTS.find(x=>x.id===openId); if(!p) return; const d=p[lang];
+    body.innerHTML=`
+      <div class="dlg-head"><div><span class="label">${esc(d.context)}</span>
+        <h3 id="dlg-title">${esc(p.title)} ${p.arName?`<span class="ar" style="color:var(--muted);font-size:.7em">${esc(p.arName)}</span>`:''}</h3></div>
+        <button class="close" type="button" aria-label="${UI.close[lang]}">×</button></div>
+      <div class="dlg-cover">${UI.hero[lang]}</div>
+      <p style="margin:0">${esc(d.desc)}</p>
+      <dl class="meta"><div><dt>${UI.role[lang]}</dt><dd>${esc(d.role)}</dd></div><div><dt>${UI.tools[lang]}</dt><dd>${esc(d.tools.join(lang==='ar'?'، ':', '))}</dd></div>
+        <div><dt>${UI.result[lang]}</dt><dd>${esc(d.award||'—')}</dd></div></dl>
+      <div style="--pc:${p.color}"><div class="label" style="margin-bottom:8px">${UI.for[lang]}</div>${audHTML(p)}</div>
+      <div class="story">
+        <div><h4>${UI.problem[lang]}</h4><p>${esc(d.problem)}</p></div>
+        <div><h4>${UI.process[lang]}</h4><p>${esc(d.process)}</p></div>
+        <div><h4>${UI.outcome[lang]}</h4><p>${esc(d.outcome)}</p></div>
+      </div>
+      <div class="dlg-links"><a class="btn" href="#">${UI.study[lang]}</a><a class="btn ghost" href="#">${UI.proto[lang]}</a><a class="btn ghost" href="#">${UI.code[lang]}</a></div>`;
+    body.querySelector('.close').onclick=()=>dlg.close();
+  }
+  document.addEventListener('click',e=>{const o=e.target.closest('[data-open]');if(!o)return;openId=o.dataset.open;renderDialog();dlg.showModal()});
+  dlg.addEventListener('click',e=>{if(e.target===dlg)dlg.close()});
+  dlg.addEventListener('close',()=>{openId=null});
+
+  /* ---------- Kashida helpers ---------- */
+  function measurer(span,build){
+    span.textContent=build(0); const w0=span.getBoundingClientRect().width;
+    span.textContent=build(20); const per=(span.getBoundingClientRect().width-w0)/20 || 1;
+    return {w0,per};
+  }
+  const heads=[...document.querySelectorAll('.kw')].map(el=>{
+    const [a,b]=el.dataset.k.split('|');
+    el.innerHTML=`<span class="txt">${star}<span class="w"></span></span>`;
+    const w=el.querySelector('.w'), st=el.querySelector('.star-shape');
+    const build=k=>a+T.repeat(k)+b;
+    const h={el,w,st,build,target:0,played:false};
+    h.fit=()=>{const m=measurer(w,build);const fs=parseFloat(getComputedStyle(el).fontSize);
+      h.target=Math.max(2,Math.floor((el.clientWidth-fs*1.1-m.w0)/m.per));
+      w.textContent=build(h.played?h.target:0)};
+    return h;
+  });
+  function playHead(h){
+    h.played=true;
+    if(reduce){h.w.textContent=h.build(h.target);h.el.classList.add('done');return}
+    const t0=performance.now(), dur=900;
+    (function tick(t){const p=Math.min(1,(t-t0)/dur), e=1-Math.pow(1-p,3);
+      h.w.textContent=h.build(Math.round(h.target*e));
+      if(p<1) requestAnimationFrame(tick); else {h.el.classList.add('done');h.st.classList.remove('pop');void h.st.offsetWidth;h.st.classList.add('pop')}})(t0);
+  }
+
+  /* ---------- Hero name ---------- */
+  const hero=document.getElementById('hero'), nameEl=document.getElementById('name'), txt=document.getElementById('name-txt'), nStar=document.getElementById('star');
+  const buildName=k=>'لج'+T.repeat(k)+'ين';
+  let M={w0:0,per:1}, cur=0, target=0, def=0, max=0, intro=true, loop=0, popped=false;
+  function fitName(){
+    M=measurer(txt,buildName);
+    const avail=hero.clientWidth-parseFloat(getComputedStyle(hero).paddingInlineStart)*2-parseFloat(getComputedStyle(nameEl).fontSize)*.6;
+    max=Math.max(3,Math.floor((avail-M.w0)/M.per));
+    def=Math.min(max,Math.max(3,Math.floor((Math.min(avail*0.7,760)-M.w0)/M.per)));
+    if(!intro){target=Math.min(target,max);cur=Math.min(cur,max)}
+    txt.textContent=buildName(Math.round(cur));
+  }
+  function popStar(){nStar.classList.remove('pop');void nStar.offsetWidth;nStar.classList.add('pop')}
+  function run(){
+    cancelAnimationFrame(loop);
+    (function step(){
+      cur+=(target-cur)*0.14; if(Math.abs(target-cur)<0.4) cur=target;
+      txt.textContent=buildName(Math.round(cur));
+      if(cur>=max*0.96&&!popped){popped=true;popStar()} else if(cur<max*0.8) popped=false;
+      if(cur!==target) loop=requestAnimationFrame(step);
+    })();
+  }
+  function playIntro(){
+    intro=true; cancelAnimationFrame(loop);
+    if(reduce){cur=target=def;txt.textContent=buildName(def);intro=false;return}
+    cur=0; txt.textContent=buildName(0); nStar.style.opacity=0;
+    const t0=performance.now()+250, dur=1100;
+    (function tick(t){const p=Math.min(1,Math.max(0,(t-t0)/dur)), e=1-Math.pow(1-p,3);
+      cur=def*e; txt.textContent=buildName(Math.round(cur));
+      if(p<1) loop=requestAnimationFrame(tick); else {cur=target=def;intro=false;nStar.style.opacity=1;popStar()}})(performance.now());
+  }
+  hero.addEventListener('pointermove',e=>{
+    if(intro||reduce) return;
+    const r=nameEl.getBoundingClientRect();
+    const dist=html.dir==='rtl'?r.right-e.clientX:e.clientX-r.left;
+    target=Math.max(0,Math.min(max,Math.round((dist-M.w0)/M.per))); run();
+  });
+  hero.addEventListener('pointerleave',()=>{if(intro||reduce)return;target=def;run()});
+
+  /* ---------- Theme ---------- */
+  const themeBtn=document.getElementById('theme');
+  const SUN='<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><circle cx="12" cy="12" r="4"/><path d="M12 2v2M12 20v2M4.9 4.9l1.4 1.4M17.7 17.7l1.4 1.4M2 12h2M20 12h2M4.9 19.1l1.4-1.4M17.7 6.3l1.4-1.4"/></svg>';
+  const MOON='<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M20 14.5A8 8 0 1 1 9.5 4a6.5 6.5 0 0 0 10.5 10.5z"/></svg>';
+  const isDark=()=>html.dataset.theme?html.dataset.theme==='dark':matchMedia('(prefers-color-scheme: dark)').matches;
+  const paintThemeBtn=()=>{themeBtn.innerHTML=isDark()?SUN:MOON;themeBtn.setAttribute('aria-label',isDark()?'Switch to light mode':'Switch to dark mode')};
+  try{const t=localStorage.getItem('lujain-theme');if(t)html.dataset.theme=t}catch(e){}
+  paintThemeBtn();
+  themeBtn.addEventListener('click',()=>{const t=isDark()?'light':'dark';html.dataset.theme=t;try{localStorage.setItem('lujain-theme',t)}catch(e){}paintThemeBtn()});
+  matchMedia('(prefers-color-scheme: dark)').addEventListener?.('change',paintThemeBtn);
+
+  /* ---------- Language ---------- */
+  const langBtn=document.getElementById('lang');
+  function renderAll(){renderUI();renderDev();renderBooks();renderGame();if(openId)renderDialog()}
+  function setLang(l,first){
+    lang=l; html.lang=l; html.dir=l==='ar'?'rtl':'ltr';
+    renderAll();
+    try{localStorage.setItem('lujain-lang',l)}catch(e){}
+    if(!first){fitName();cur=target=Math.min(def,max);txt.textContent=buildName(cur);heads.forEach(h=>h.fit());runPipe()}
+  }
+  langBtn.addEventListener('click',()=>setLang(lang==='en'?'ar':'en'));
+  newGame();
+  let start='en'; try{start=localStorage.getItem('lujain-lang')||'en'}catch(e){}
+  if(location.hash==='#ar') start='ar';
+  setLang(start,true);
+
+  /* ---------- Boot ---------- */
+  (document.fonts?document.fonts.ready:Promise.resolve()).then(()=>{
+    fitName(); playIntro(); heads.forEach(h=>h.fit());
+    if('IntersectionObserver' in window){
+      const io=new IntersectionObserver(es=>es.forEach(en=>{if(!en.isIntersecting)return;
+        if(en.target.id==='dev-row'){runPipe();io.unobserve(en.target);return}
+        const h=heads.find(x=>x.el===en.target);if(h&&!h.played)playHead(h);io.unobserve(en.target)}),{threshold:.6});
+      heads.forEach(h=>io.observe(h.el)); io.observe(devRow);
+    } else {heads.forEach(playHead);runPipe()}
+  });
+  devRow.addEventListener('mouseenter',e=>{if(e.target===devRow) runPipe()});
+  let rt; addEventListener('resize',()=>{clearTimeout(rt);rt=setTimeout(()=>{fitName();if(!intro){cur=target=Math.min(def,max);txt.textContent=buildName(cur)}heads.forEach(h=>h.fit())},150)});
+
+  /* ---------- Copy email ---------- */
+  const btn=document.getElementById('copy'), email=document.getElementById('email');
+  btn.addEventListener('click',()=>{
+    const orig=btn.innerHTML;
+    const ok=()=>{btn.textContent=UI.copied[lang];setTimeout(()=>btn.innerHTML=orig,1600)};
+    const fb=()=>{const r=document.createRange();r.selectNodeContents(email);const s=getSelection();s.removeAllRanges();s.addRange(r);btn.textContent=UI.selected[lang];setTimeout(()=>btn.innerHTML=orig,2400)};
+    try{navigator.clipboard.writeText(email.textContent).then(ok,fb)}catch(e){fb()}
+  });
+})();
+</script>
+</body>
+</html>
